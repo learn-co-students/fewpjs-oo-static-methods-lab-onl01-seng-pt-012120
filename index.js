@@ -9,20 +9,17 @@ class Formatter {
   }
 
   static titleize(string) {
-    const exceptions = ['the', 'a', 'an', 'but', 'of', 'and', 'for', 'at', 'by', 'from']
+    let exceptions = ['the', 'a', 'an', 'but', 'of', 'and', 'for', 'at', 'by', 'from']
     const wordArray = string.split(" ")
-
-    const result = wordArray.map(x => {
+    
+    const result = wordArray.map(function(word, i) {
       debugger
-      // this is undefined...?
-    })
+      return (!exceptions.includes(word)) || i === 0 ? this.capitalize(word) : word
+    }, this)
+    
+    return result.join(" ")
   }
 }
 
 
 Formatter.titleize( "where the wild things are" )
-
-// iterate through wordArray and capitalize each word 
-// UNLESS its in the exception array
-// and push those onto a new array(or map) 
-// then join that array and return it
