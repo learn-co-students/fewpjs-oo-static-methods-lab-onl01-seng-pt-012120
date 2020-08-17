@@ -12,17 +12,13 @@ class Formatter {
     let newTitle = [];
     let titleArr = string.split(' ');
 
-    let firstWord = titleArr[0];
-    firstWord = firstWord.charAt(0).toUpperCase() + firstWord.slice(1)
-    newTitle.push(firstWord);
+    newTitle.push(this.capitalize(titleArr[0]));
 
     for (let i=1; i < titleArr.length; i++) {
       if (lowerCaseWords.includes(titleArr[i])) {
         newTitle.push(titleArr[i])
       } else {
-        let newWord = titleArr[i];
-        newWord = newWord.charAt(0).toUpperCase() + newWord.slice(1)
-        newTitle.push(newWord)
+        newTitle.push(this.capitalize(titleArr[i]))
       }
     };
 
