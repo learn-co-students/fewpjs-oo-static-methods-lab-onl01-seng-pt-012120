@@ -10,16 +10,17 @@ class Formatter {
 
   static titleize(s) {
     let doNotCaps = ['the', 'a', 'an', 'but', 'of', 'and', 'for', 'at', 'by','from'];
-    let fw = Formatter.capitalize(s.split(' ')[0]);
-    let finalArr = [fw];
-    Formatter.sanitize(s).split(' ').slice(1).forEach(word => {
-      if(doNotCaps.find(nc=>nc===word)){
-        finalArr.push(word)        
-      } else {
-        finalArr.push(Formatter.capitalize(word));
+    let thisString = sanitize(s);
+    let words = thisString.split(' ');
+    let fw = capitalize(words[0])
+    let newWords = [fw, words.slice(1).map(w=>{
+      if(doNotCaps.find(nc=>nc===w)){
+        return w;
+      }else{
+        return capitalize(w)
       }
-    });
-    return finalArr.join(' ')
+    })];
+    return newWords.join(' ')
   }
 
 }

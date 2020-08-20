@@ -10,9 +10,9 @@ class Formatter {
 
   static titleize(s) {
     let doNotCaps = ['the', 'a', 'an', 'but', 'of', 'and', 'for', 'at', 'by','from'];
-    let fw = Formatter.capitalize(s.split(' ')[0]);
+    let fw = s.split(' ')[0];
     let finalArr = [fw];
-    Formatter.sanitize(s).split(' ').slice(1).forEach(word => {
+    s.split(' ').slice(1).forEach(word => {
       if(doNotCaps.find(nc=>nc===word)){
         finalArr.push(word)        
       } else {
